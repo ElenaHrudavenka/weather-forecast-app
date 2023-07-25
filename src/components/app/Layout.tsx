@@ -1,12 +1,15 @@
 import React from 'react';
 import s from '../app/Layout.module.scss';
+import Location from '../location/Location'
+import Weather from "../weather/Weather";
 
 export const Layout = () => {
   return (
     <>
-      <header>Here will be a header.</header>
+      <header>Weather Dashboard</header>
       <main className={s.mainBlock}>
-        <span>Here will be a main part.</span>
+          <Location/>
+          <Weather/>
       </main>
       <footer className={s.footerBlock}>
         <span>Here will be a description.</span>
