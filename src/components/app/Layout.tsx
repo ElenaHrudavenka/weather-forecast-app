@@ -1,14 +1,14 @@
 import React from 'react';
 import s from '../app/Layout.module.scss';
-import Location from '../location/Location'
 import Weather from "../weather/Weather";
+import LocationContainer from "../location/LocationContainer";
 
 export const Layout = () => {
   return (
     <>
       <header>Weather Dashboard</header>
       <main className={s.mainBlock}>
-          <Location/>
+          <LocationContainer/>
           <Weather/>
       </main>
       <footer className={s.footerBlock}>

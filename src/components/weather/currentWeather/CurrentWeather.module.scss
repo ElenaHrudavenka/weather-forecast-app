@@ -1,0 +1,21 @@
+.currentWeatherBlock {
+  display: flex;
+  background: #545c69;
+  border-radius: 5px;
+  margin: 10px;
+  height: 30%;
+  &Inform {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+
+    padding: 20px;
+    text-align: left;
+  }
+  &Visual {
+    width: 30%;
+    border-radius: 5px;
+    margin: 5px;
+    border: 1px solid white;
+  }
+}

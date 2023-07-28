@@ -13,8 +13,7 @@ const initialState: AppStateType = {
 };
 export type AppActionType =
   | ReturnType<typeof setIsLoading>
-  | ReturnType<typeof setToken>
-  | ReturnType<typeof setWeatherData>;
+  | ReturnType<typeof setToken>;
 
 export const appReducer = (state = initialState, action: AppActionType) => {
   switch (action.type) {
@@ -31,11 +30,6 @@ export const appReducer = (state = initialState, action: AppActionType) => {
         token_type: action.token_type,
       };
     }
-    case 'APP/SET-WEATHER-DATA': {
-      return {
-        ...state,
-      };
-    }
     default:
       return state;
   }
@@ -44,7 +38,6 @@ export const appReducer = (state = initialState, action: AppActionType) => {
 export const setIsLoading = (isLoading: boolean) => ({ type: 'APP/SET-IS-LOADING', isLoading } as const);
 export const setToken = (access_token: string, token_type: string) =>
   ({ type: 'APP/SET-TOKEN', access_token, token_type } as const);
-export const setWeatherData = () => ({ type: 'APP/SET-WEATHER-DATA' } as const);
 
 export const getTokenTC = (): AppThunkType => (dispatch) => {
   dispatch(setIsLoading(true));
@@ -58,16 +51,3 @@ export const getTokenTC = (): AppThunkType => (dispatch) => {
     });
 };
 
-export const getWeatherDataTC =
-  (access_token: string): AppThunkType =>
-  (dispatch) => {
-    dispatch(setIsLoading(true));
-    AppAPI.getWeatherData()
-      .then((resData) => {
-        console.log(resData);
-      })
-      .catch((e) => console.log(e))
-      .finally(() => {
-        dispatch(setIsLoading(true));
-      });
-  };
