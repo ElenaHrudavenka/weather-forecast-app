@@ -1,0 +1,39 @@
+@import '../../../common/style/variables';
+.headerBlock {
+  height: 7vh;
+  background-color: $primaryColor;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  &_location {
+    border: 1px solid white;
+  }
+  &_options {
+  }
+  & button {
+    width: 35px;
+    height: 35px;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .icon {
+    height: 65%;
+    width: 65%;
+    color: white;
+  }
+}
+.mainBlock {
+  background-color: $primaryColor;
+  color: $primaryTextColor;
+  height: 93vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 0;
+}
