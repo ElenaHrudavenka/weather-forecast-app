@@ -6,14 +6,16 @@ type AppStateType = {
   access_token: string;
   token_type: string;
 };
+export type TokenResponseType = {
+  access_token: string;
+  token_type: string;
+};
 const initialState: AppStateType = {
   isLoading: false,
   access_token: '',
   token_type: '',
 };
-export type AppActionType =
-  | ReturnType<typeof setIsLoading>
-  | ReturnType<typeof setToken>;
+export type AppActionType = ReturnType<typeof setIsLoading> | ReturnType<typeof setToken>;
 
 export const appReducer = (state = initialState, action: AppActionType) => {
   switch (action.type) {
@@ -50,4 +52,3 @@ export const getTokenTC = (): AppThunkType => (dispatch) => {
       dispatch(setIsLoading(true));
     });
 };
-
