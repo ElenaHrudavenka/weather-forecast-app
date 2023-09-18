@@ -24,8 +24,6 @@ export const LocationContainer = () => {
     }
   };
   return (
-    <>
       <Location getCurrentLocation={getCurrentLocation} latitude={latitude} longitude={longitude} city={city} />
-    </>
   );
 };

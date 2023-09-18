@@ -15,8 +15,13 @@ export const Modal = ({ active, setActive, children }: ModalPropsType) => {
         className={active ? cl(s.modal__content, s.active) : s.modal__content}
         onClick={(e) => {
           e.stopPropagation();
-        }}
-      >
+        }}>
+        <div className={s.modal__buttonBox}>
+          <button type='button' className={s.modal__buttonBox_button} onClick={setActive}>
+            <span className={s.modal__buttonBox_text}>Close</span>
+            <span className={s.modal__buttonBox_cross}></span>
+          </button>
+        </div>
         {children}
       </div>
     </div>

@@ -1,2 +1,22 @@
 @mixin mainFontStyle() {
 }
+/*
+@mixin flex($flex-direction, $align-items, $justify-content, $flex-wrap) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-wrap: $flex-wrap;
+}*/
+
+@mixin button($width, $height, $border-color, $background-color) {
+  width: $width;
+  height: $height;
+  border-color: $border-color;
+  border-radius: 10px;
+  background-color: $background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
