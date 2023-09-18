@@ -4,6 +4,7 @@ import thunk, { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { appReducer } from './reducers/appReducer';
 import { weatherReducer } from './reducers/weatherReducer';
 import { locationReducer } from './reducers/locationReducer';
+import { optionsReducer } from './reducers/optionsReducer';
 
 export type AppRootStateType = ReturnType<typeof rootReducer>;
 export type AppThunkType = ThunkAction<void, AppRootStateType, unknown, AnyAction>;
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   app: appReducer,
   weather: weatherReducer,
   location: locationReducer,
+  options: optionsReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

@@ -26,15 +26,15 @@ export const Location = ({ getCurrentLocation, latitude, longitude, city }: Loca
   return (
     <div className={s.block}>
       <div className={s.blockLocation}>
-        <label>
+        <label className={s.blockLocation__label}>
           City
-          <input onChange={changeCityValue} value={cityName} />
+          <input className={s.blockLocation__input} onChange={changeCityValue} value={cityName} />
         </label>
-        <button onClick={cityNameHandler}>
-          <IoMdSearch className={s.icon} />
+        <button className={s.blockLocation__button} onClick={cityNameHandler}>
+          <IoMdSearch className={s.blockLocation__icon} />
         </button>
-        <button onClick={getCurrentLocation}>
-          <FaLocationDot className={s.icon} />
+        <button className={s.blockLocation__button} onClick={getCurrentLocation}>
+          <FaLocationDot className={s.blockLocation__icon} />
         </button>
       </div>
     </div>
