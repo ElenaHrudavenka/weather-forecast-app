@@ -1,13 +1,4 @@
-@mixin mainFontStyle() {
-}
-/*
-@mixin flex($flex-direction, $align-items, $justify-content, $flex-wrap) {
-  display: flex;
-  flex-direction: $flex-direction;
-  align-items: $align-items;
-  justify-content: $justify-content;
-  flex-wrap: $flex-wrap;
-}*/
+@import './variables';
 
 @mixin button($width, $height, $border-color, $background-color) {
   width: $width;
@@ -19,4 +10,30 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+@mixin descr($data-descr) {
+  &:hover::after {
+    content: $data-descr;
+    position: absolute;
+    min-width: 120px;
+    background-color: rgba($textColorPrimary, 0.8);
+    border-radius: 5px;
+    border: 1px solid $primaryColor;
+    color: $primaryColor;
+    left: auto;
+    top: 99%;
+    padding: 1vh;
+    font-size: 0.9em;
+    z-index: 5;
+  }
+}
+@mixin wrapperWeather() {
+  top: 7vh;
+  position: relative;
+  background: rgba($primaryColor, 0.7);
+  border-radius: 5px;
+  padding: 1%;
+  width: 90%;
+  height: 90vh;
 }

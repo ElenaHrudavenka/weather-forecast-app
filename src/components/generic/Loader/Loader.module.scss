@@ -1,0 +1,45 @@
+@import 'src/common/style/variables';
+
+.loaderBox {
+  display: flex;
+  height: 90vh;
+  background-color: transparent;
+  justify-content: center;
+  align-items: center;
+
+  &__circle {
+    width: 20vh;
+    height: 20vh;
+
+    border: 20px solid $secondColor;
+    border-top: 20px solid $textColorSecond;
+    border-bottom: 20px solid $primaryLineColor;
+    border-radius: 50%;
+    animation: loader 2s infinite linear;
+  }
+
+  @keyframes loader {
+    0% {
+      border-color: $primaryColor;
+      width: 18vh;
+      height: 18vh;
+    }
+    25% {
+      border-color: $primaryLineColor;
+      width: 16vh;
+      height: 16vh;
+    }
+    75% {
+      border-color: $primaryColor;
+      width: 18vh;
+      height: 18vh;
+    }
+    100% {
+      transform: rotate(360deg);
+      border-color: $secondColor;
+      width: 20vh;
+      height: 20vh;
+    }
+  }
+
+}

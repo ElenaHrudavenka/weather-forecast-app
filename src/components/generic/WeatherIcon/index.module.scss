@@ -1,0 +1,10 @@
+@import 'src/common/style/mixins';
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  @include descr(attr(data-descr));
+}

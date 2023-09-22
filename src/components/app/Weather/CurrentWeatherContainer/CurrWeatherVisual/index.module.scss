@@ -1,0 +1,40 @@
+@import 'src/common/style/mixins';
+@import 'src/common/style/variables';
+
+.currWeatherVisualBlock {
+  background: $secondColor;
+  height: 90%;
+  width: 25%;
+  border-radius: 5px;
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: $textColorSecond;
+  position: relative;
+  &__cityDescr {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 2%;
+    right: 2%;
+    border-radius: 50%;
+    background-color: $additionalColor;
+    &:hover {
+      border: 2px solid $textColorSecond;
+    }
+    @include descr(attr(data-descr));
+  }
+  &__cityInf {
+    &:after {
+      content: '\00B0';
+    }
+  }
+  @media screen and ($upperValueForTablet) {
+    width: 100%;
+    margin: 1vh;
+    font-size: 1.2rem;
+    flex-direction: column;
+  }
+}

@@ -73,15 +73,13 @@ const setWeatherData = (weatherData: WeatherResponseType) => ({ type: 'WEATHER/S
 export const getWeatherDataTC =
   (access_token: string, lat: number, lon: number): AppThunkType =>
   (dispatch) => {
-    dispatch(setIsLoading(true));
+    //dispatch(setIsLoading(true));
     AppAPI.getWeatherData(access_token, lat, lon)
       .then((resData) => {
         dispatch(setWeatherData(resData));
-        /*                    console.log('Data:');
-                    console.dir(resData);*/
       })
       .catch((e) => console.log(e))
       .finally(() => {
-        dispatch(setIsLoading(true));
+        dispatch(setIsLoading(false));
       });
   };

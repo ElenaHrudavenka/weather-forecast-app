@@ -2,6 +2,7 @@
 
 import { WeatherResponseType } from '../store/reducers/weatherReducer';
 import { TokenResponseType } from '../store/reducers/appReducer';
+import { getInitialTime } from '../services/getInitialTime';
 
 const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
@@ -16,7 +17,7 @@ export const AppAPI = {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error('Error');
+          throw new Error('Ошибка при получении токена!');
         }
         return res.json();
       })
@@ -25,7 +26,7 @@ export const AppAPI = {
       });
   },
   getWeatherData(access_token: string, lat: number, lon: number) {
-    const validdatetime = new Date().toISOString();
+    const initialTime = getInitialTime();
     const requestParameters: Array<string> = [
       `t_2m:C`, // Instantaneous temperature at 2m above ground in degrees Celsius (C), kelvin (K) or degree Fahrenheit (F)
       `wind_speed_10m:ms`, // Instantaneous wind speed at 10m above ground
@@ -42,7 +43,7 @@ export const AppAPI = {
       `sunset:sql`, //Sunset
     ];
     return fetch(
-      `https://api.meteomatics.com/${validdatetime}P4D:PT24H/${requestParameters}/${lat},${lon}/json?access_token=${access_token}`,
+      `https://api.meteomatics.com/${initialTime}P5D:PT24H/${requestParameters}/${lat},${lon}/json?access_token=${access_token}`,
       {
         method: 'GET',
         headers: headers,

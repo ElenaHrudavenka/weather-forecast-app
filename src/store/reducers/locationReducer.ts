@@ -2,11 +2,12 @@ import {
   CityGeolocationResponseType,
   CurrentCoordinatesType,
   CurrentGeolocationResponseType,
+  descriptionCity,
   LocationStateType,
 } from './locationReducer.types';
 import { AppThunkType } from '../store';
 import { AppAPI } from '../../api/api';
-import { error } from 'console';
+import { setIsLoading } from './appReducer';
 
 const currentCoordinates: CurrentCoordinatesType = {
   accuracy: null,
@@ -151,14 +152,14 @@ export const locationReducer = (state = initialState, action: LocationActionType
     case 'LOCATION/SET-CITY-LOCATION': {
       return {
         ...state,
-        city: action.response.results[0].city,
-        country: action.response.results[0].country,
-        formatted: action.response.results[0].formatted,
-        latitude: action.response.results[0].lat,
-        longitude: action.response.results[0].lon,
-        address_line1: action.response.results[0].address_line1,
-        address_line2: action.response.results[0].address_line2,
-        country_code: action.response.results[0].country_code,
+        city: action.response[0].city,
+        country: action.response[0].country,
+        formatted: action.response[0].formatted,
+        latitude: action.response[0].lat,
+        longitude: action.response[0].lon,
+        address_line1: action.response[0].address_line1,
+        address_line2: action.response[0].address_line2,
+        country_code: action.response[0].country_code,
       };
     }
     default:
@@ -177,7 +178,7 @@ export const setCurrentLocation = (response: CurrentGeolocationResponseType) =>
     response,
   } as const);
 
-export const setCityLocation = (response: CityGeolocationResponseType) =>
+export const setCityLocation = (response: Array<descriptionCity>) =>
   ({
     type: 'LOCATION/SET-CITY-LOCATION',
     response,
@@ -186,21 +187,24 @@ export const setCityLocation = (response: CityGeolocationResponseType) =>
 export const getLocation =
   (latitude: number, longitude: number): AppThunkType =>
   (dispatch) => {
+    dispatch(setIsLoading(true));
     AppAPI.getCurrentLocation(latitude, longitude).then((resData) => {
       dispatch(setCurrentLocation(resData.features[0]));
-      console.log(resData.features[0]);
     });
   };
 
 export const getCityLocation =
   (cityName: string): AppThunkType =>
   (dispatch) => {
+    dispatch(setIsLoading(true));
     AppAPI.getLocationOfCity(cityName)
       .then((resData) => {
-        console.log(cityName);
-        console.log(resData);
+        dispatch(setCityLocation(resData.results));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => {
+        //dispatch(setIsLoading(false));
+      });
   };
 export type LocationActionType =
   | ReturnType<typeof setCurrentCoordinates>

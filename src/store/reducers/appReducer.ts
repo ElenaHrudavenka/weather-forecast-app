@@ -42,13 +42,9 @@ export const setToken = (access_token: string, token_type: string) =>
   ({ type: 'APP/SET-TOKEN', access_token, token_type } as const);
 
 export const getTokenTC = (): AppThunkType => (dispatch) => {
-  dispatch(setIsLoading(true));
   AppAPI.getToken()
     .then((resData) => {
       dispatch(setToken(resData.access_token, resData.token_type));
     })
-    .catch((e) => console.log(e))
-    .finally(() => {
-      dispatch(setIsLoading(true));
-    });
+    .catch((err) => console.log(err)); //добавить отображение ошибки
 };

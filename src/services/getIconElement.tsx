@@ -1,0 +1,68 @@
+import { TbCloudQuestion } from 'react-icons/tb';
+import { WiCloudy, WiDayCloudy, WiDaySunny, WiDaySunnyOvercast, WiRain, WiSnow } from 'react-icons/wi';
+import {
+  BsCloudDrizzle,
+  BsCloudFog,
+  BsCloudHail,
+  BsCloudHailFill,
+  BsCloudHaze,
+  BsCloudHaze2,
+  BsCloudLightningRain,
+  BsCloudLightningRainFill,
+  BsCloudMoon,
+  BsCloudRain,
+  BsCloudRainHeavy,
+  BsCloudRainHeavyFill,
+  BsCloudsFill,
+  BsCloudSleet,
+  BsFillCloudDrizzleFill,
+  BsFillCloudFogFill,
+  BsFillCloudHazeFill,
+  BsFillCloudLightningRainFill,
+  BsFillCloudRainHeavyFill,
+  BsFillCloudSleetFill,
+  BsFillCloudSnowFill,
+  BsFillMoonStarsFill,
+} from 'react-icons/bs';
+import React from 'react';
+import { FaCloudMoon, FaCloudMoonRain } from 'react-icons/fa6';
+
+export const getIconElement = (weatherSymbol: number): Array<string | JSX.Element> => {
+  const weatherSymbols = new Map([
+    [0, ['A weather code could not be determined', <TbCloudQuestion />]],
+    [1, ['Clear sky', <WiDaySunny />]],
+    [2, ['Light clouds', <WiDaySunnyOvercast />]],
+    [3, ['Partly cloudy', <WiDayCloudy />]],
+    [4, ['Cloudy', <WiCloudy />]],
+    [5, ['Rain', <BsCloudRain />]],
+    [6, ['Rain and snow / sleet', <WiRain />]],
+    [7, ['Snow', <WiSnow />]],
+    [8, ['Rain shower', <BsCloudRainHeavy />]],
+    [9, ['Snow shower', <BsCloudSleet />]],
+    [10, ['Sleet shower', <BsCloudRainHeavy />]],
+    [11, ['Light Fog', <BsCloudFog />]],
+    [12, ['Dense fog', <BsCloudHaze />]],
+    [13, ['Freezing rain', <BsCloudHail />]],
+    [14, ['Thunderstorms', <BsCloudLightningRain />]],
+    [15, ['Drizzle', <BsCloudDrizzle />]],
+    [16, ['Sandstorm', <BsCloudHaze2 />]],
+    [100, ['A weather code could not be determined', <TbCloudQuestion />]],
+    [101, ['Clear sky', <BsFillMoonStarsFill />]],
+    [102, ['Light clouds', <BsCloudMoon />]],
+    [103, ['Partly cloudy', <FaCloudMoon />]],
+    [104, ['Cloudy', <BsCloudsFill />]],
+    [105, ['Rain', <FaCloudMoonRain />]],
+    [106, ['Rain and snow / sleet', <BsFillCloudSleetFill />]],
+    [107, ['Snow', <BsFillCloudSnowFill />]],
+    [108, ['Rain shower', <BsFillCloudRainHeavyFill />]],
+    [109, ['Snow shower', <BsCloudHailFill />]],
+    [110, ['Sleet shower', <BsCloudRainHeavyFill />]],
+    [111, ['Light Fog', <BsFillCloudFogFill />]],
+    [112, ['Dense fog', <BsFillCloudHazeFill />]],
+    [113, ['Freezing rain', <BsCloudHailFill />]],
+    [114, ['Thunderstorms', <BsCloudLightningRainFill />]],
+    [115, ['Drizzle', <BsFillCloudDrizzleFill />]],
+    [116, ['Sandstorm', <BsFillCloudLightningRainFill />]],
+  ]);
+  return weatherSymbols.get(weatherSymbol) || ['A weather code could not be determined', <TbCloudQuestion />];
+};

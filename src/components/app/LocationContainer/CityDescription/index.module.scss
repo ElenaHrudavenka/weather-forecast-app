@@ -1,0 +1,42 @@
+@import 'src/common/style/mixins';
+@import 'src/common/style/variables';
+
+.cityDescriptionBlock {
+/*  top: 7vh;*/
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__wrapper {
+    @include wrapperWeather;
+    top: 3.5vh;
+    &_list {
+      height: 100%;
+      background-color: $secondColor;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    justify-content: space-evenly;
+      & ul {
+        width: 60%;
+        & li {
+          list-style-type: none;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 2px dotted $additionalColor;
+          & span:nth-child(even) {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    & button {
+      @include button(20vh, 5vh, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+      background: rgba($primaryColor, 0.8);
+      margin: 1%;
+    }
+
+  }
+}

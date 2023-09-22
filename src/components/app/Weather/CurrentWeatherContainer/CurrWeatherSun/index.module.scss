@@ -1,0 +1,39 @@
+@import 'src/common/style/mixins';
+
+.currWeatherSunBlock {
+  background: $secondColor;
+  height: 90%;
+  width: 15%;
+  border-radius: 5px;
+  padding: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: $textColorSecond;
+  font-size: 1.2rem;
+  &__item {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    @include descr(attr(data-descr));
+    @media screen and ($upperValueForTablet) {
+      width: 30%;
+      padding: 3%;
+      border: 2px solid $colorCardText;
+      border-radius: 5%;
+    }
+    & span {
+      font-weight: bold;
+    }
+  }
+  @media screen and ($upperValueForTablet) {
+    width: 100%;
+    margin: 1vh;
+    font-size: 1.2rem;
+    flex-direction: row;
+  }
+}

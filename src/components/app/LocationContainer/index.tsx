@@ -20,10 +20,8 @@ export const LocationContainer = () => {
         dispatch(setCurrentCoordinates(position.coords));
       });
     } else {
-      alert('Error');
+      alert('Не удается получить Ваше местоположение. Необходимо соответствующее разрешение.');
     }
   };
-  return (
-      <Location getCurrentLocation={getCurrentLocation} latitude={latitude} longitude={longitude} city={city} />
-  );
+  return <Location getCurrentLocation={getCurrentLocation} latitude={latitude} longitude={longitude} city={city} />;
 };
