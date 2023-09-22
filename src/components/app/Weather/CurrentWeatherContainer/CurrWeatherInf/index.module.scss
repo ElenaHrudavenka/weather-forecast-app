@@ -1,0 +1,33 @@
+@import 'src/common/style/variables';
+
+.currWeatherInfBlock {
+  background: $secondColor;
+  height: 90%;
+  width: 55%;
+  border-radius: 5px;
+  display: flex;
+  padding: 1vh 1vw;
+  color: $textColorSecond;
+  @media screen and ($upperValueForTablet) {
+    width: 100%;
+    margin: 1vh;
+    font-size: 1.2rem;
+  }
+  & ul {
+    width: 100%;
+    & li {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px dotted $additionalColor;
+      & span:nth-child(even) {
+        font-weight: bold;
+      }
+      }
+    }
+  &_temperature {
+    &:after {
+      content: ' ''\00B0'attr(data-item);
+    }
+  }
+}

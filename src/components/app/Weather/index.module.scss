@@ -1,6 +1,11 @@
+@import 'src/common/style/variables';
+@import 'src/common/style/mixins';
+
 .wrapper {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  width: 70%;
-  height: 100%;
+  @include wrapperWeather;
+  //top: 7vh;
+  @media screen and ($upperValueForTablet) {
+    width: 96%;
+    height: fit-content;
+  }
 }

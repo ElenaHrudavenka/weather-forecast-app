@@ -52,7 +52,7 @@ export type CurrentGeolocationResponseType = {
   };
   type: string;
 };
-type descriptionCity = {
+export type descriptionCity = {
   datasource: {
     sourcename: string;
     attribution: string;

@@ -1,38 +1,20 @@
 @import '../../../common/style/variables';
 @import '../../../common/style/mixins';
 
-.headerBlock {
-  height: 7vh;
-  background-color: $primaryColor;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1vh;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.layoutBlock {
+  // font-size: calc(10px + 1vmin);
 
-  &__location {
-    border: 1px solid white;
-  }
-
-  &__options {
-  }
-
-  &__button {
-    @include button(35px, 35px, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-
-    &_icon {
-      height: 65%;
-      width: 65%;
-      color: white;
-    }
-  }
-}
-  .mainBlock {
-    background-color: $primaryColor;
-    color: $primaryTextColor;
-    height: 93vh;
+  &__main {
+    color: $textColorPrimary;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 20px 0;
+    padding: 10px 0;
+
+    @media screen and ($lowerValueForTablet) and ($upperValueForTablet) {
+
+    }
   }
+}
+

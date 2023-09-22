@@ -1,32 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './index.module.scss';
 import { Weather } from '../Weather';
-import { AiFillSetting } from 'react-icons/ai';
-import { Modal } from '../../generic/Modal';
-import { LocationContainer } from '../LocationContainer';
-import { UnitListContainer } from '../UnitListContainer';
+import { AppDispatch, AppRootStateType } from '../../../store/store';
+import { getTokenTC } from '../../../store/reducers/appReducer';
+import Header from '../Header';
 
 export const Layout = () => {
-  const [isActiveOptions, setIsActiveOptions] = useState<boolean>(false);
-  const showOptionsModal = () => {
-    setIsActiveOptions(!isActiveOptions);
-  };
+  const dispatch = AppDispatch();
+
+  // Получение токена для meteomatics.com
+  useEffect(() => {
+    dispatch(getTokenTC());
+  }, []);
+
   return (
-    <>
-      <header className={s.headerBlock}>
-        <LocationContainer />
-        <div className={s.headerBlock__options}>
-          <button className={s.headerBlock__button} onClick={showOptionsModal}>
-            <AiFillSetting className={s.headerBlock__button_icon} />
-          </button>
-          <Modal active={isActiveOptions} setActive={showOptionsModal}>
-            /* <UnitListContainer /> */
-          </Modal>
-        </div>
-      </header>
-      <main className={s.mainBlock}>
+    <div className={s.layoutBlock}>
+      <Header />
+      <main className={s.layoutBlock__main}>
         <Weather />
       </main>
-    </>
+    </div>
   );
 };
