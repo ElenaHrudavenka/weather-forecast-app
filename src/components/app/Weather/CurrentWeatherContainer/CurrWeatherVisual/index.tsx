@@ -15,7 +15,7 @@ type CurrWeatherVisualPropsType = {
 const CurrWeatherVisual = ({ city, temperature, weather_symbol_1h }: CurrWeatherVisualPropsType) => {
   const navigate = useNavigate();
   const onClickDescribe = () => {
-    navigate(PATH.DESCRIPTION_CITY);
+    navigate(`${PATH.DESCRIPTION_CITY}/${city}`);
   };
   return (
     <div className={s.currWeatherVisualBlock}>

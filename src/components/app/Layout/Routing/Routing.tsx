@@ -4,15 +4,17 @@ import { Layout } from '../index';
 import CityDescription from '../../LocationContainer/CityDescription';
 
 export const PATH = {
-  WEATHER: '/',
-  DESCRIPTION_CITY: '/city',
+  WEATHER: 'weather-forecast-app/',
+  DESCRIPTION_CITY: 'weather-forecast-app/city',
 };
 
 const Routing = () => {
   return (
     <Routes>
-      <Route path={PATH.DESCRIPTION_CITY} element={<CityDescription />} />
-      <Route path={PATH.WEATHER} element={<Layout />}></Route>
+      <Route path={PATH.DESCRIPTION_CITY} element={<CityDescription />}>
+        <Route path={':city'} element={<CityDescription />} />
+      </Route>
+      <Route path={PATH.WEATHER} element={<Layout />} />
     </Routes>
   );
 };
