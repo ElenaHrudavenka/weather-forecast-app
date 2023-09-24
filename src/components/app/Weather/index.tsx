@@ -14,8 +14,8 @@ export const Weather = () => {
 
   //Запрос погоды
   useEffect(() => {
-    latitude && longitude && dispatch(getWeatherDataTC(access_token, latitude, longitude));
-  }, [access_token, latitude, longitude, dispatch]);
+    latitude && longitude && access_token && dispatch(getWeatherDataTC(access_token, latitude, longitude));
+  }, [latitude, longitude, access_token, dispatch]);
   return (
     <div className={s.wrapper}>
       <CurrentWeatherContainer />
