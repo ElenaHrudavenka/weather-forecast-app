@@ -4,8 +4,8 @@ import { Layout } from '../index';
 import CityDescription from '../../LocationContainer/CityDescription';
 
 export const PATH = {
-  WEATHER: 'weather-forecast-app/',
-  DESCRIPTION_CITY: 'weather-forecast-app/city',
+  WEATHER: '/weather-forecast-app/',
+  DESCRIPTION_CITY: '/weather-forecast-app/city',
 };
 
 const Routing = () => {
