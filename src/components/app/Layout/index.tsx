@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import s from './index.module.scss';
 import { Weather } from '../Weather';
-import { AppDispatch, AppRootStateType } from '../../../store/store';
+import { AppDispatch } from '../../../store/store';
 import { getTokenTC } from '../../../store/reducers/appReducer';
 import Header from '../Header';
 
