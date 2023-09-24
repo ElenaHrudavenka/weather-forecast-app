@@ -13,8 +13,8 @@ export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
   getToken() {
     return fetch('https://login.meteomatics.com/api/v1/token', {
+      mode: 'no-cors',
       method: 'GET',
-      credentials: 'include',
       headers: headers,
     })
       .then((res) => {
