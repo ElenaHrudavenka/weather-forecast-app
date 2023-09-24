@@ -10,13 +10,14 @@ let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
 
 export const AppAPI = {
+  // Получаю токен для авторизации на meteomatics.com
   getToken() {
     return fetch('https://login.meteomatics.com/api/v1/token', {
       method: 'GET',
       headers: headers,
     })
       .then((res) => {
-        if (!res.ok) {
+        if (!res.ok || res.status > 399) {
           throw new Error('Ошибка при получении токена!');
         }
         return res.json();
@@ -25,6 +26,7 @@ export const AppAPI = {
         return data;
       });
   },
+  // Получаю данные о погоде
   getWeatherData(access_token: string, lat: number, lon: number) {
     const initialTime = getInitialTime();
     const requestParameters: Array<string> = [
@@ -49,30 +51,47 @@ export const AppAPI = {
         headers: headers,
       },
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok || res.status > 399) {
+          throw new Error('Ошибка при получении данных с сервера api.meteomatics.com!');
+        }
+        return res.json();
+      })
       .then((data: WeatherResponseType) => {
         return data;
       });
   },
+  // Получаю информацио о населенном пункте по широте и долготе
   getCurrentLocation(lat: number, lon: number) {
     const API_KEY = 'e30e635a317940f3ac501140e4c0f591';
     return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${API_KEY}`)
-      .then((response) => response.json())
+      .then((res) => {
+        if (!res.ok || res.status > 399) {
+          throw new Error('Ошибка при получении местоположения по координатам с api.geoapify.com!');
+        }
+        return res.json();
+      })
       .then((result) => {
         if (result.features.length) {
           return result;
-          //console.log(result.features[0].properties.formatted);
         } else {
-          console.log('No address found');
+          console.log('Местоположение не определено.');
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   },
+  // Получаю информацию о населенном пункте по его названию
   getLocationOfCity(cityName: string) {
     return fetch(
       `https://api.geoapify.com/v1/geocode/search?text=${cityName}&format=json&apiKey=e30e635a317940f3ac501140e4c0f591`,
-    ).then((responce) => responce.json());
+    )
+      .then((res) => {
+        if (!res.ok || res.status > 399) {
+          throw new Error('Ошибка при получении местоположения с api.geoapify.com!');
+        }
+        return res.json();
+      })
+      .then((result) => {
+        return result;
+      });
   },
 };

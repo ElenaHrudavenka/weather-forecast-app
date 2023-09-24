@@ -78,7 +78,7 @@ export const getWeatherDataTC =
       .then((resData) => {
         dispatch(setWeatherData(resData));
       })
-      .catch((e) => console.log(e))
+      .catch((err) => console.log(err)) //добавить отображение ошибки
       .finally(() => {
         dispatch(setIsLoading(false));
       });
