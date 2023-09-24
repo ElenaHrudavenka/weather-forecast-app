@@ -14,6 +14,7 @@ export const AppAPI = {
   getToken() {
     return fetch('https://login.meteomatics.com/api/v1/token', {
       method: 'GET',
+      credentials: 'include',
       headers: headers,
     })
       .then((res) => {
