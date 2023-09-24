@@ -199,9 +199,9 @@ export const getCityLocation =
     dispatch(setIsLoading(true));
     AppAPI.getLocationOfCity(cityName)
       .then((resData) => {
-        dispatch(setCityLocation(resData.results));
+        dispatch(setCityLocation(resData));
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error)) //добавить отображение ошибки
       .finally(() => {
         //dispatch(setIsLoading(false));
       });

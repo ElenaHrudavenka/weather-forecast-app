@@ -11,9 +11,9 @@ export const Weather = () => {
   const latitude = useSelector<AppRootStateType, number | null>((state) => state.location.latitude);
   const longitude = useSelector<AppRootStateType, number | null>((state) => state.location.longitude);
   const dispatch = AppDispatch();
-
   //Запрос погоды
   useEffect(() => {
+    console.log(access_token);
     latitude && longitude && access_token && dispatch(getWeatherDataTC(access_token, latitude, longitude));
   }, [latitude, longitude, access_token, dispatch]);
   return (
