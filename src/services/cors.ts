@@ -9,11 +9,14 @@ export async function handleRequest(request: Request): Promise<Response> {
       `);*/
     let response = await fetch(request.url, {
       method: request.method,
+      //mode: request.mode,
+      credentials: request.credentials,
       headers: request.headers,
       redirect: 'follow',
+      body: request.body,
     });
     response = new Response(response.body, response);
-    response.headers.set('Access-Control-Allow-Origin', '*');
+    response.headers.set('Access-Control-Allow-Origin', 'https://elenahrudavenka.github.io');
     return response;
   } catch (err: any) {
     console.log('Ошибка тут!');
