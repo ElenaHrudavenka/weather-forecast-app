@@ -12,7 +12,7 @@ headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
   getToken() {
-    return fetch('https://login.meteomatics.com/api/v1/token', {
+    return fetch('https://cors-get-proxy.sirjosh.workers.dev/?url=https://login.meteomatics.com/api/v1/token', {
       mode: 'cors',
       method: 'GET',
       credentials: 'include',
