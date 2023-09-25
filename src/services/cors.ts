@@ -2,8 +2,8 @@ export async function handleRequest(request: Request): Promise<Response> {
   try {
     const url = new URL(request.url);
 
-    /*    if (url.pathname === '/')
-      return new Response(`
+    if (url.pathname === '/') console.log('url.pathname');
+    /*      return new Response(`
         Usage:\n
           ${url.origin}/<url>
       `);*/
@@ -16,7 +16,7 @@ export async function handleRequest(request: Request): Promise<Response> {
       body: request.body,
     });
     response = new Response(response.body, response);
-    response.headers.set('Access-Control-Allow-Origin', url.origin);
+    response.headers.set('Access-Control-Allow-Origin', '*');
     return response;
   } catch (err: any) {
     console.log('Ошибка тут!');

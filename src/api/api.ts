@@ -12,7 +12,7 @@ headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
 const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
   //mode: 'cors',
   method: 'GET',
-  credentials: 'include',
+  //credentials: 'include',
   headers: headers,
 });
 
