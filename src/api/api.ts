@@ -4,22 +4,36 @@ import { WeatherResponseType } from '../store/reducers/weatherReducer';
 import { TokenResponseType } from '../store/reducers/appReducer';
 import { getInitialTime } from '../services/getInitialTime';
 import { handleRequest } from '../services/cors';
+import axios from 'axios';
 
 const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
-const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
+const authorizationData = 'Basic ' + btoa(username + ':' + password);
+/*const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
   //mode: 'cors',
   method: 'GET',
   credentials: 'include',
   headers: headers,
+});*/
+
+const instance = axios.create({
+  baseURL: 'https://login.meteomatics.com/api/v1/token',
+  withCredentials: true,
+  headers: {
+    Authorization: authorizationData,
+  },
 });
 
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
   getToken() {
-    return handleRequest(requestToken)
+    return instance.get('').then((res) => {
+      console.log(res.data);
+      return res.data;
+    });
+    /*return handleRequest(requestToken)
       .then((res): Promise<TokenResponseType> => {
         if (!res.ok || res.status > 399) {
           throw new Error('Ошибка при получении токена!');
@@ -27,10 +41,10 @@ export const AppAPI = {
         console.dir(res);
         return res.json();
       })
-      .then((data: TokenResponseType) => {
-        console.log(data);
-        return data;
-      });
+        .then((data: TokenResponseType) => {
+          console.log(data);
+          return data;
+        })*/
   },
   // Получаю данные о погоде
   getWeatherData(access_token: string, lat: number, lon: number) {
