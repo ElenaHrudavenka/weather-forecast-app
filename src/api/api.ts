@@ -3,28 +3,32 @@
 import { WeatherResponseType } from '../store/reducers/weatherReducer';
 import { TokenResponseType } from '../store/reducers/appReducer';
 import { getInitialTime } from '../services/getInitialTime';
+import { handleRequest } from '../services/cors';
 
 const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
+  mode: 'cors',
+  method: 'GET',
+  credentials: 'include',
+  headers: headers,
+});
 
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
   getToken() {
-    return fetch('https://cors-get-proxy.sirjosh.workers.dev/?url=https://login.meteomatics.com/api/v1/token', {
-      mode: 'cors',
-      method: 'GET',
-      credentials: 'include',
-      headers: headers,
-    })
-      .then((res) => {
+    return handleRequest(requestToken)
+      .then((res): Promise<TokenResponseType> => {
         if (!res.ok || res.status > 399) {
           throw new Error('Ошибка при получении токена!');
         }
+        console.dir(res);
         return res.json();
       })
       .then((data: TokenResponseType) => {
+        console.log(data);
         return data;
       });
   },

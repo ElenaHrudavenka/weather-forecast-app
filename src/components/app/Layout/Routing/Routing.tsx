@@ -4,6 +4,7 @@ import { Layout } from '../index';
 import CityDescription from '../../LocationContainer/CityDescription';
 
 export const PATH = {
+  EMPTY: '/',
   WEATHER: '/weather-forecast-app/',
   DESCRIPTION_CITY: '/weather-forecast-app/city',
 };
@@ -15,6 +16,7 @@ const Routing = () => {
         <Route path={':city'} element={<CityDescription />} />
       </Route>
       <Route path={PATH.WEATHER} element={<Layout />} />
+      <Route path={PATH.EMPTY} element={<Layout />} />
     </Routes>
   );
 };

@@ -43,8 +43,8 @@ export const setToken = (access_token: string, token_type: string) =>
 
 export const getTokenTC = (): AppThunkType => (dispatch) => {
   AppAPI.getToken()
-    .then((resData) => {
+    .then((resData: TokenResponseType) => {
       dispatch(setToken(resData.access_token, resData.token_type));
     })
-    .catch((err) => console.log(err)); //добавить отображение ошибки
+    .catch((err: any) => console.log(err)); //добавить отображение ошибки
 };
