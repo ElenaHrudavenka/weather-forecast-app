@@ -1,9 +1,7 @@
 //https://api.meteomatics.com/<validdatetime>/<parameters>/<location>/<format>?<optionals>
 
 import { WeatherResponseType } from '../store/reducers/weatherReducer';
-import { TokenResponseType } from '../store/reducers/appReducer';
 import { getInitialTime } from '../services/getInitialTime';
-import { handleRequest } from '../services/cors';
 import axios from 'axios';
 
 const username = 'hrudavenka_hrudavenka';
@@ -20,7 +18,7 @@ const authorizationData = 'Basic ' + btoa(username + ':' + password);
 
 const instance = axios.create({
   baseURL: 'https://login.meteomatics.com/api/v1/token',
-  withCredentials: true,
+  //withCredentials: true,
   headers: {
     Authorization: authorizationData,
   },
@@ -33,18 +31,6 @@ export const AppAPI = {
       console.log(res.data);
       return res.data;
     });
-    /*return handleRequest(requestToken)
-      .then((res): Promise<TokenResponseType> => {
-        if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении токена!');
-        }
-        console.dir(res);
-        return res.json();
-      })
-        .then((data: TokenResponseType) => {
-          console.log(data);
-          return data;
-        })*/
   },
   // Получаю данные о погоде
   getWeatherData(access_token: string, lat: number, lon: number) {
