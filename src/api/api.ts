@@ -8,12 +8,6 @@ const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
-headers.set('Host', 'elenahrudavenka.github.io');
-/*const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
-  method: 'GET',
-  credentials: 'include',
-  headers: headers,
-});*/
 
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
