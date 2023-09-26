@@ -1,36 +1,36 @@
 //https://api.meteomatics.com/<validdatetime>/<parameters>/<location>/<format>?<optionals>
 
 import { WeatherResponseType } from '../store/reducers/weatherReducer';
+import { TokenResponseType } from '../store/reducers/appReducer';
 import { getInitialTime } from '../services/getInitialTime';
-import axios from 'axios';
 
 const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
-const authorizationData = 'Basic ' + btoa(username + ':' + password);
+headers.set('Host', 'elenahrudavenka.github.io');
 /*const requestToken = new Request('https://login.meteomatics.com/api/v1/token', {
-  //mode: 'cors',
   method: 'GET',
   credentials: 'include',
   headers: headers,
 });*/
 
-const instance = axios.create({
-  baseURL: 'https://login.meteomatics.com/api/v1/token',
-  //withCredentials: true,
-  headers: {
-    Authorization: authorizationData,
-  },
-});
-
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
   getToken() {
-    return instance.get('').then((res) => {
-      console.log(res.data);
-      return res.data;
-    });
+    return fetch('https://login.meteomatics.com/api/v1/token', {
+      method: 'GET',
+      headers: headers,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Error');
+        }
+        return res.json();
+      })
+      .then((data: TokenResponseType) => {
+        return data;
+      });
   },
   // Получаю данные о погоде
   getWeatherData(access_token: string, lat: number, lon: number) {
