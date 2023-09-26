@@ -8,6 +8,7 @@ const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+headers.set('Host', 'login.meteomatics.com');
 
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
