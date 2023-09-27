@@ -4,6 +4,7 @@ import { WeatherResponseType } from '../store/reducers/weatherReducer';
 import { TokenResponseType } from '../store/reducers/appReducer';
 import { getInitialTime } from '../services/getInitialTime';
 
+const API_KEY = 'e30e635a317940f3ac501140e4c0f591';
 const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
@@ -15,11 +16,12 @@ export const AppAPI = {
   getToken() {
     return fetch('https://login.meteomatics.com/api/v1/token', {
       method: 'GET',
+      credentials: 'include',
       headers: headers,
     })
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('Error');
+        if (!res.ok || res.status > 399) {
+          throw new Error(`Ошибка при получении токена. Статус код ${res.status}`);
         }
         return res.json();
       })
@@ -54,7 +56,7 @@ export const AppAPI = {
     )
       .then((res) => {
         if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении данных с сервера api.meteomatics.com!');
+          throw new Error(`Ошибка при получении данных с сервера api.meteomatics.com! Статус код ${res.status}`);
         }
         return res.json();
       })
@@ -64,11 +66,12 @@ export const AppAPI = {
   },
   // Получаю информацио о населенном пункте по широте и долготе
   getCurrentLocation(lat: number, lon: number) {
-    const API_KEY = 'e30e635a317940f3ac501140e4c0f591';
     return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${API_KEY}`)
       .then((res) => {
         if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении местоположения по координатам с api.geoapify.com!');
+          throw new Error(
+            `Ошибка при получении местоположения по координатам с api.geoapify.com! Статус код ${res.status}`,
+          );
         }
         return res.json();
       })
@@ -82,9 +85,7 @@ export const AppAPI = {
   },
   // Получаю информацию о населенном пункте по его названию
   getLocationOfCity(cityName: string) {
-    return fetch(
-      `https://api.geoapify.com/v1/geocode/search?text=${cityName}&format=json&apiKey=e30e635a317940f3ac501140e4c0f591`,
-    )
+    return fetch(`https://api.geoapify.com/v1/geocode/search?text=${cityName}&format=json&apiKey=${API_KEY}`)
       .then((res) => {
         if (!res.ok || res.status > 399) {
           throw new Error('Ошибка при получении местоположения с api.geoapify.com!');
