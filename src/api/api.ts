@@ -8,7 +8,6 @@ const username = 'hrudavenka_hrudavenka';
 const password = '1n8Oj6TZ5i';
 let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
-//headers.set('Host', 'login.meteomatics.com');
 
 export const AppAPI = {
   // Получаю токен для авторизации на meteomatics.com
@@ -16,11 +15,12 @@ export const AppAPI = {
     return fetch('https://login.meteomatics.com/api/v1/token', {
       method: 'GET',
       mode: 'no-cors',
+      credentials: 'include',
       headers: headers,
     })
       .then((res) => {
-        if (!res.ok || res.status > 399) {
-          throw new Error(`${res.status}`);
+        if (!res.ok) {
+          throw new Error(`Ошибка при получении токена.`);
         }
         return res.json();
       })
