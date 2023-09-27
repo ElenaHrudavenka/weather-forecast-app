@@ -19,8 +19,8 @@ export const AppAPI = {
       headers: headers,
     })
       .then((res) => {
-        if (!res.ok) {
-          throw new Error('Error');
+        if (!res.ok || res.status > 399) {
+          throw new Error(`${res.status}`);
         }
         return res.json();
       })
