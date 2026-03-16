@@ -8,7 +8,7 @@ $colorCardText: #113B5C;
 $primaryLineColor: #113B5C;
 $additionalColor: #DDA346;
 $upperValueForMobile: '';
-$lowerValueForTablet: (min-width: 361px);
-$upperValueForTablet: (max-width: 768px);
+//$lowerValueForTablet: (min-width: 361px);
+$upperValueForTablet: 768px;
 $lowerValueForDesktop: '';
 

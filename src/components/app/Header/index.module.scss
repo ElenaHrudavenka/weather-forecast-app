@@ -14,14 +14,6 @@
   width: 100vw;
   z-index: 10;
 
-  &_location {
-    //border: 1px solid greenyellow;
-    //max-width: 80vw;
-  }
-
-  &_options {
-  }
-
   &_button {
     @include button(5vh, 5vh, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
 

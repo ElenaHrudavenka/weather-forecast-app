@@ -31,8 +31,8 @@ const cityGeolocation: CityGeolocationResponseType = {
       country: '',
       country_code: '',
       city: '',
-      lon: null,
-      lat: null,
+      longitude: null,
+      latitude: null,
       formatted: '',
       address_line1: '',
       address_line2: '',
@@ -56,10 +56,10 @@ const cityGeolocation: CityGeolocationResponseType = {
       },
       place_id: '',
       bbox: {
-        lon1: null,
-        lat1: null,
-        lon2: null,
-        lat2: null,
+        longitude1: null,
+        latitude1: null,
+        longitude2: null,
+        latitude2: null,
       },
     },
   ],
@@ -92,8 +92,8 @@ const locationData: CurrentGeolocationResponseType = {
     district: '',
     formatted: '',
     housenumber: '',
-    lat: null,
-    lon: null,
+    latitude: null,
+    longitude: null,
     place_id: '',
     plus_code: '',
     postcode: '',
@@ -155,8 +155,8 @@ export const locationReducer = (state = initialState, action: LocationActionType
         city: action.response[0].city,
         country: action.response[0].country,
         formatted: action.response[0].formatted,
-        latitude: action.response[0].lat,
-        longitude: action.response[0].lon,
+        latitude: action.response[0].latitude,
+        longitude: action.response[0].longitude,
         address_line1: action.response[0].address_line1,
         address_line2: action.response[0].address_line2,
         country_code: action.response[0].country_code,
@@ -201,9 +201,9 @@ export const getCityLocation =
       .then((resData) => {
         dispatch(setCityLocation(resData));
       })
-      .catch((error) => console.log(error)) //добавить отображение ошибки
+      .catch((error) => console.log(error)) // TODO: Implement showing the error to the user
       .finally(() => {
-        //dispatch(setIsLoading(false));
+        dispatch(setIsLoading(false));
       });
   };
 export type LocationActionType =

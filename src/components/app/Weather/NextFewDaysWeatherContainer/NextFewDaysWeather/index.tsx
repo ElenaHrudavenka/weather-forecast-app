@@ -1,5 +1,4 @@
-import React from 'react';
-import s from './index.module.scss';
+import style from './index.module.scss';
 import { DatesItemType } from '../../../../../store/reducers/weatherReducer';
 import { ForecastItem } from '../ForecastItem';
 import { useSelector } from 'react-redux';
@@ -13,7 +12,7 @@ export const NextFewDaysWeather = ({ dates, weather_symbol_1h }: NextFewDaysWeat
     (state) => state.weather.data.find((item) => item.parameter == 'weather_symbol_1h:idx')?.coordinates[0].dates,
   );
   return (
-    <div className={s.nextWeatherBlock}>
+    <div className={style.nextWeatherBlock}>
       {dates.map((item, index) => {
         return (
           <ForecastItem

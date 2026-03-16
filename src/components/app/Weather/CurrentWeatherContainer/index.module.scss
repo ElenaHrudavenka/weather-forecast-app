@@ -10,7 +10,7 @@
   height: 30%;
   font-size: 2vh;
 
-  @media screen and ($upperValueForTablet) {
+  @media screen and (max-width: $upperValueForTablet) {
     font-size: 0.8rem;
     flex-direction: column;
     height: auto;

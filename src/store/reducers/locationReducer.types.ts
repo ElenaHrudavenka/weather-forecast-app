@@ -29,8 +29,8 @@ export type CurrentGeolocationResponseType = {
     district: string;
     formatted: string;
     housenumber: string;
-    lat: number | null;
-    lon: number | null;
+    latitude: number | null;
+    longitude: number | null;
     place_id: string;
     plus_code: string;
     postcode: string;
@@ -63,8 +63,8 @@ export type descriptionCity = {
   country: string;
   country_code: string;
   city: string;
-  lon: number | null;
-  lat: number | null;
+  longitude: number | null;
+  latitude: number | null;
   formatted: string;
   address_line1: string;
   address_line2: string;
@@ -88,10 +88,10 @@ export type descriptionCity = {
   };
   place_id: string;
   bbox: {
-    lon1: number | null;
-    lat1: number | null;
-    lon2: number | null;
-    lat2: number | null;
+    longitude1: number | null;
+    latitude1: number | null;
+    longitude2: number | null;
+    latitude2: number | null;
   };
 };
 export type CityGeolocationResponseType = {

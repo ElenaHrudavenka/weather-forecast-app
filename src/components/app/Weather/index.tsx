@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import s from './index.module.scss';
+import { useEffect } from 'react';
+import style from './index.module.scss';
 import { useSelector } from 'react-redux';
 import { AppDispatch, AppRootStateType } from '../../../store/store';
 import { CurrentWeatherContainer } from './CurrentWeatherContainer';
@@ -17,7 +17,7 @@ export const Weather = () => {
     latitude && longitude && access_token && dispatch(getWeatherDataTC(access_token, latitude, longitude));
   }, [latitude, longitude, access_token, dispatch]);
   return (
-    <div className={s.wrapper}>
+    <div className={style.wrapper}>
       <CurrentWeatherContainer />
       <NextFewDaysWeatherContainer />
     </div>

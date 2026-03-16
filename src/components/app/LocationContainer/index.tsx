@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Location } from './Location';
 import { useSelector } from 'react-redux';
 import { AppDispatch, AppRootStateType } from '../../../store/store';
@@ -20,7 +20,7 @@ export const LocationContainer = () => {
         dispatch(setCurrentCoordinates(position.coords));
       });
     } else {
-      alert('Не удается получить Ваше местоположение. Необходимо соответствующее разрешение.');
+      alert('Unable to get your location. Please allow location access.');
     }
   };
   return <Location getCurrentLocation={getCurrentLocation} latitude={latitude} longitude={longitude} city={city} />;

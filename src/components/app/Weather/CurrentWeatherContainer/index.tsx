@@ -1,7 +1,6 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../../store/store';
-import s from './index.module.scss';
+import style from './index.module.scss';
 import CurrWeatherVisual from './CurrWeatherVisual';
 import CurrWeatherInf from './CurrWeatherInf';
 import CurrWeatherSun from './CurrWeatherSun';
@@ -41,7 +40,7 @@ export const CurrentWeatherContainer = () => {
   );
 
   return (
-    <div className={s.currentWeatherBlock}>
+    <div className={style.currentWeatherBlock}>
       <CurrWeatherVisual city={city} temperature={temperature} weather_symbol_1h={weather_symbol_1h} />
       <CurrWeatherInf
         temperature={temperature}
