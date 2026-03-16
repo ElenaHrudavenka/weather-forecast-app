@@ -4,7 +4,7 @@
 .wrapper {
   @include wrapperWeather;
   //top: 7vh;
-  @media screen and ($upperValueForTablet) {
+  @media screen and (max-width: $upperValueForTablet) {
     width: 96%;
     height: fit-content;
   }

@@ -1,5 +1,4 @@
-import React from 'react';
-import s from './index.module.scss';
+import style from './index.module.scss';
 import WeatherIcon from '../../../../generic/WeatherIcon';
 import { getDate } from '../../../../../services/getDate';
 
@@ -14,8 +13,8 @@ export const ForecastItem = ({ date, temperature, weather_symbol_1h }: ForecastI
     return <div>Нет данных</div>;
   }
   return (
-    <div className={s.ForecastItemBlock}>
-      <div className={s.ForecastItemBlock__frame}>
+    <div className={style.ForecastItemBlock}>
+      <div className={style.ForecastItemBlock__frame}>
         <h3>{dateStr}</h3>
         <WeatherIcon weather_symbol_1h={weather_symbol_1h} />
         <p>{temperature}</p>

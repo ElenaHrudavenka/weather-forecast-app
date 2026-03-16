@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import s from './index.module.scss';
+import { ChangeEvent, useEffect, useState } from 'react';
+import style from './index.module.scss';
 import { AppDispatch } from '../../../../store/store';
 import { getCityLocation } from '../../../../store/reducers/locationReducer';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -26,29 +26,29 @@ export const Location = ({ getCurrentLocation, latitude, longitude, city }: Loca
     dispatch(getCityLocation(cityName));
   };
   return (
-    <div className={s.block}>
-      <div className={s.blockLocation}>
-        <div className={s.blockLocation__label}>
+    <div className={style.block}>
+      <div className={style.blockLocation}>
+        <div className={style.blockLocation__label}>
           <label htmlFor='city'>Город</label>
         </div>
         <input
-          className={s.blockLocation__input}
+          className={style.blockLocation__input}
           onChange={onChangeCityValue}
           value={cityName}
           id='city'
           placeholder='Введите город'
         />
         <button
-          className={s.blockLocation__button}
+          className={style.blockLocation__button}
           onClick={cityNameHandler}
           data-descr={'Искать по названию населенного пункта'}>
-          <IoMdSearch className={s.blockLocation__icon} />
+          <IoMdSearch className={style.blockLocation__icon} />
         </button>
         <button
-          className={s.blockLocation__button}
+          className={style.blockLocation__button}
           onClick={getCurrentLocation}
           data-descr={'Определить мое местоположение'}>
-          <FaLocationDot className={s.blockLocation__icon} />
+          <FaLocationDot className={style.blockLocation__icon} />
         </button>
       </div>
     </div>

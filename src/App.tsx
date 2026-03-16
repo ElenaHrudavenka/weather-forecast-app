@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './App.module.scss';
 import bgImage from './assets/img/background.jpg';
 import Routing from './components/app/Layout/Routing/Routing';

@@ -14,8 +14,8 @@ export type WeatherDataType = {
   coordinates: [
     {
       dates: [DatesItemType];
-      lat: number;
-      lon: number;
+      latitude: number;
+      longitude: number;
     },
   ];
 };
@@ -40,8 +40,8 @@ const initialState: WeatherResponseType = {
               value: 0,
             },
           ],
-          lat: 0,
-          lon: 0,
+          latitude: 0,
+          longitude: 0,
         },
       ],
     },
@@ -71,14 +71,14 @@ export const weatherReducer = (state = initialState, action: WeatherActionType) 
 const setWeatherData = (weatherData: WeatherResponseType) => ({ type: 'WEATHER/SET-WEATHER', weatherData } as const);
 
 export const getWeatherDataTC =
-  (access_token: string, lat: number, lon: number): AppThunkType =>
+  (access_token: string, latitude: number, longitude: number): AppThunkType =>
   (dispatch) => {
-    //dispatch(setIsLoading(true));
-    AppAPI.getWeatherData(access_token, lat, lon)
+    dispatch(setIsLoading(true));
+    AppAPI.getWeatherData(access_token, latitude, longitude)
       .then((resData) => {
         dispatch(setWeatherData(resData));
       })
-      .catch((err) => console.log(err)) //добавить отображение ошибки
+      .catch((err) => console.log(err)) // TODO: Implement showing the error to the user
       .finally(() => {
         dispatch(setIsLoading(false));
       });

@@ -30,7 +30,7 @@
       content: '\00B0';
     }
   }
-  @media screen and ($upperValueForTablet) {
+  @media screen and (max-width: $upperValueForTablet) {
     width: 100%;
     margin: 1vh;
     font-size: 1.2rem;

@@ -1,5 +1,4 @@
-import React from 'react';
-import s from './index.module.scss';
+import style from './index.module.scss';
 import WeatherIcon from '../../../../generic/WeatherIcon';
 import { useNavigate } from 'react-router-dom';
 import { PATH } from './../../../Layout/Routing/Routing';
@@ -18,16 +17,16 @@ const CurrWeatherVisual = ({ city, temperature, weather_symbol_1h }: CurrWeather
     navigate(`${PATH.DESCRIPTION_CITY}/${city}`);
   };
   return (
-    <div className={s.currWeatherVisualBlock}>
+    <div className={style.currWeatherVisualBlock}>
       <div
         onClick={onClickDescribe}
-        className={s.currWeatherVisualBlock__cityDescr}
-        data-descr={'Подробная информация о населенном пункте.'}>
+        className={style.currWeatherVisualBlock__cityDescr}
+        data-descr={'Detailed information about the location.'}>
         <IconContext.Provider value={{ color: `#33678E`, size: `100%` }}>
           <AiFillInfoCircle />
         </IconContext.Provider>
       </div>
-      <h2 className={s.currWeatherVisualBlock__cityInf}>
+      <h2 className={style.currWeatherVisualBlock__cityInf}>
         {`${city}   `}
         {temperature}
       </h2>

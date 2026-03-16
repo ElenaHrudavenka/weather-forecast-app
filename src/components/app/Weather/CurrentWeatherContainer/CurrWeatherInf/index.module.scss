@@ -8,7 +8,7 @@
   display: flex;
   padding: 1vh 1vw;
   color: $textColorSecond;
-  @media screen and ($upperValueForTablet) {
+  @media screen and (max-width: $upperValueForTablet) {
     width: 100%;
     margin: 1vh;
     font-size: 1.2rem;

@@ -1,5 +1,4 @@
-import React from 'react';
-import s from './index.module.scss';
+import style from './index.module.scss';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PATH } from '../../Layout/Routing/Routing';
 import Header from '../../Header';
@@ -12,10 +11,10 @@ const CityDescription = () => {
   };
 
   return (
-    <div className={s.cityDescriptionBlock}>
+    <div className={style.cityDescriptionBlock}>
       <Header />
-      <div className={s.cityDescriptionBlock__wrapper}>
-        <div className={s.cityDescriptionBlock__wrapper_list}>
+      <div className={style.cityDescriptionBlock__wrapper}>
+        <div className={style.cityDescriptionBlock__wrapper_list}>
           <ul>
             <h2>{`Информация о городе ${city}`}</h2>
             <li>

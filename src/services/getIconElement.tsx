@@ -24,7 +24,6 @@ import {
   BsFillCloudSnowFill,
   BsFillMoonStarsFill,
 } from 'react-icons/bs';
-import React from 'react';
 import { FaCloudMoon, FaCloudMoonRain } from 'react-icons/fa6';
 
 export const getIconElement = (weatherSymbol: number): Array<string | JSX.Element> => {

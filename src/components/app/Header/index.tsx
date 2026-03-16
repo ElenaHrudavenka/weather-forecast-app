@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import s from './index.module.scss';
+import { useState } from 'react';
+import style from './index.module.scss';
 import { LocationContainer } from '../LocationContainer';
 import { AiFillSetting } from 'react-icons/ai';
 import { Modal } from '../../generic/Modal';
@@ -10,11 +10,11 @@ const Index = () => {
     setIsActiveOptions(!isActiveOptions);
   };
   return (
-    <header className={s.headerBlock}>
+    <header className={style.headerBlock}>
       <LocationContainer />
-      <div className={s.headerBlock_options}>
-        <button className={s.headerBlock_button} onClick={showOptionsModal}>
-          <AiFillSetting className={s.headerBlock_buttonIcon} />
+      <div className={style.headerBlock_options}>
+        <button className={style.headerBlock_button} onClick={showOptionsModal}>
+          <AiFillSetting className={style.headerBlock_buttonIcon} />
         </button>
         <Modal active={isActiveOptions} setActive={showOptionsModal}>
           <span>Here will be a measure items list.</span>

@@ -17,11 +17,11 @@
   -moz-osx-font-smoothing: grayscale;
 
   &__paralax {
-    background-attachment: fixed; /*будет ли прокручиваться изображение фона с остальным содержимым*/
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    @media screen and ($upperValueForTablet){
+    @media screen and (max-width: $upperValueForTablet) {
       height: 300vh;
     }
   }

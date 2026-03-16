@@ -12,7 +12,6 @@ let headers = new Headers();
 headers.set('Authorization', 'Basic ' + btoa(USER_NAME + ':' + PASSWORD));
 
 export const AppAPI = {
-  // Получаю токен для авторизации на meteomatics.com
   getToken() {
     return fetch('https://login.meteomatics.com/api/v1/token', {
       method: 'GET',
@@ -21,7 +20,7 @@ export const AppAPI = {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error(`Ошибка при получении токена.`);
+          throw new Error(`Failed to obtain token.`);
         }
         return res.json();
       })
@@ -30,8 +29,8 @@ export const AppAPI = {
         return data;
       });
   },
-  // Получаю данные о погоде
-  getWeatherData(access_token: string, lat: number, lon: number) {
+
+  getWeatherData(access_token: string, latitude: number, longitude: number) {
     const initialTime = getInitialTime();
     const requestParameters: Array<string> = [
       `t_2m:C`, // Instantaneous temperature at 2m above ground in degrees Celsius (C), kelvin (K) or degree Fahrenheit (F)
@@ -49,7 +48,7 @@ export const AppAPI = {
       `sunset:sql`, //Sunset
     ];
     return fetch(
-      `https://api.meteomatics.com/${initialTime}P5D:PT24H/${requestParameters}/${lat},${lon}/json?access_token=${access_token}`,
+      `https://api.meteomatics.com/${initialTime}P5D:PT24H/${requestParameters}/${latitude},${longitude}/json?access_token=${access_token}`,
       {
         method: 'GET',
         headers: headers,
@@ -57,7 +56,7 @@ export const AppAPI = {
     )
       .then((res) => {
         if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении данных с сервера api.meteomatics.com!');
+          throw new Error('Error fetching data from api.meteomatics.com.');
         }
         return res.json();
       })
@@ -65,12 +64,12 @@ export const AppAPI = {
         return data;
       });
   },
-  // Получаю информацио о населенном пункте по широте и долготе
-  getCurrentLocation(lat: number, lon: number) {
-    return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=${API_KEY}`)
+  // Getting information about a location by latitude and longitude
+  getCurrentLocation(latitude: number, longitude: number) {
+    return fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=${API_KEY}`)
       .then((res) => {
         if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении местоположения по координатам с api.geoapify.com!');
+          throw new Error('Error fetching location by coordinates from api.geoapify.com.');
         }
         return res.json();
       })
@@ -78,16 +77,16 @@ export const AppAPI = {
         if (result.features.length) {
           return result;
         } else {
-          console.log('Местоположение не определено.');
+          console.log('Location not determined.');
         }
       });
   },
-  // Получаю информацию о населенном пункте по его названию
+  // Getting information about a location by its name
   getLocationOfCity(cityName: string) {
     return fetch(`https://api.geoapify.com/v1/geocode/search?text=${cityName}&format=json&apiKey=${API_KEY}`)
       .then((res) => {
         if (!res.ok || res.status > 399) {
-          throw new Error('Ошибка при получении местоположения с api.geoapify.com!');
+          throw new Error('Error fetching location by coordinates from api.geoapify.com.');
         }
         return res.json();
       })

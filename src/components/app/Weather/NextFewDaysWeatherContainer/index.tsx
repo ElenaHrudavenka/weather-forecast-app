@@ -1,4 +1,3 @@
-import React from 'react';
 import { NextFewDaysWeather } from './NextFewDaysWeather';
 import { useSelector } from 'react-redux';
 import { AppRootStateType } from '../../../../store/store';

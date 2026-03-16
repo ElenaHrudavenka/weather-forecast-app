@@ -20,7 +20,7 @@
     align-items: center;
     position: relative;
     @include descr(attr(data-descr));
-    @media screen and ($upperValueForTablet) {
+    @media screen and (max-width: $upperValueForTablet) {
       width: 30%;
       padding: 3%;
       border: 2px solid $colorCardText;
@@ -30,7 +30,7 @@
       font-weight: bold;
     }
   }
-  @media screen and ($upperValueForTablet) {
+  @media screen and (max-width: $upperValueForTablet) {
     width: 100%;
     margin: 1vh;
     font-size: 1.2rem;

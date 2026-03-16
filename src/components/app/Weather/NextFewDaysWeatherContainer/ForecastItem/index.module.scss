@@ -35,7 +35,7 @@
         &:after {
           content: '\00B0';
         }
-      @media screen and ($upperValueForTablet){
+      @media screen and (max-width: $upperValueForTablet){
         font-size: 4vh;
       }
     }
@@ -43,7 +43,7 @@
   &:hover {
     background-color: $additionalColor;
   }
-  @media screen and ($upperValueForTablet){
+  @media screen and (max-width: $upperValueForTablet){
     margin: 1vh 0;
     min-width: 250px;
   }

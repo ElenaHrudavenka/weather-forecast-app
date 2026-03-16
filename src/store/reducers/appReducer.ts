@@ -46,5 +46,5 @@ export const getTokenTC = (): AppThunkType => (dispatch) => {
     .then((resData: TokenResponseType) => {
       dispatch(setToken(resData.access_token, resData.token_type));
     })
-    .catch((err: any) => console.log(err)); //добавить отображение ошибки
+    .catch((err: any) => console.log(err)); // TODO: Implement showing the error to the user
 };

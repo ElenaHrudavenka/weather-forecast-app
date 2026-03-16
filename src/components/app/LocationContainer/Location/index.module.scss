@@ -19,7 +19,7 @@
       display: flex;
       align-items: center;
       padding-bottom: 3%;
-      @media screen and ($upperValueForTablet) {
+      @media screen and (max-width: $upperValueForTablet) {
         visibility: hidden;
         width: 1px;
       }
@@ -39,7 +39,7 @@
       &::placeholder {
         font-size: 0.8rem;
         color: $textColorPrimary;
-        @media screen and ($upperValueForTablet) {
+        @media screen and (max-width: $upperValueForTablet) {
           color: $primaryColor;
           font-size: 0.8rem;
         }
