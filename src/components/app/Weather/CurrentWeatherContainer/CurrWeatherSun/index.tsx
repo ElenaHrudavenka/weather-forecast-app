@@ -16,19 +16,19 @@ const CurrWeatherSun = ({ sunrise, sunset, uv }: CurrWeatherSunPropsType) => {
 
   return (
     <div className={style.currWeatherSunBlock}>
-      <div className={style.currWeatherSunBlock__item} data-descr='Рассвет'>
+      <div className={style.currWeatherSunBlock__item} data-descr='Sunrise'>
         <IconContext.Provider value={{ color: '#DDA346', size: `2.5rem` }}>
           <BsFillSunriseFill />
         </IconContext.Provider>
         <span>{timeSunrise}</span>
       </div>
-      <div className={style.currWeatherSunBlock__item} data-descr='Закат'>
+      <div className={style.currWeatherSunBlock__item} data-descr='Sunset'>
         <IconContext.Provider value={{ color: '#DDA346', size: `2.5rem` }}>
           <BsFillSunsetFill />
         </IconContext.Provider>
         <span>{timeSunset}</span>
       </div>
-      <div className={style.currWeatherSunBlock__item} data-descr='UV-активность'>
+      <div className={style.currWeatherSunBlock__item} data-descr='UV-Index'>
         <IconContext.Provider value={{ color: '#DDA346', size: `2.5rem` }}>
           <GiSundial />
         </IconContext.Provider>

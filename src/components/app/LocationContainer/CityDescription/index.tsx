@@ -16,29 +16,29 @@ const CityDescription = () => {
       <div className={style.cityDescriptionBlock__wrapper}>
         <div className={style.cityDescriptionBlock__wrapper_list}>
           <ul>
-            <h2>{`Информация о городе ${city}`}</h2>
+            <h2>{`City Information ${city}`}</h2>
             <li>
-              <span>Страна:</span>
-              <span>страна</span>
+              <span>Country:</span>
+              <span>country</span>
             </li>
             <li>
-              <span>Старое название:</span>
-              <span>старое название</span>
+              <span>Former Name:</span>
+              <span>former name</span>
             </li>
             <li>
-              <span>Почтовый код:</span>
-              <span>код</span>
+              <span>Postcode:</span>
+              <span>postcode</span>
             </li>
             <li>
-              <span>Широта:</span>
-              <span>широта</span>
+              <span>Latitude:</span>
+              <span>latitude</span>
             </li>
             <li>
-              <span>Долгота:</span>
-              <span>долгота</span>
+              <span>Longitude:</span>
+              <span>longitude</span>
             </li>
           </ul>
-          <button onClick={onClickNavigateMain}>На главную</button>
+          <button onClick={onClickNavigateMain}>Home</button>
         </div>
       </div>
     </div>

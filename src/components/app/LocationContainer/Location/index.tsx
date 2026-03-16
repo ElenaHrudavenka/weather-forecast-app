@@ -29,25 +29,25 @@ export const Location = ({ getCurrentLocation, latitude, longitude, city }: Loca
     <div className={style.block}>
       <div className={style.blockLocation}>
         <div className={style.blockLocation__label}>
-          <label htmlFor='city'>Город</label>
+          <label htmlFor='city'>City</label>
         </div>
         <input
           className={style.blockLocation__input}
           onChange={onChangeCityValue}
           value={cityName}
           id='city'
-          placeholder='Введите город'
+          placeholder='Enter city'
         />
         <button
           className={style.blockLocation__button}
           onClick={cityNameHandler}
-          data-descr={'Искать по названию населенного пункта'}>
+          data-descr={'Search by location name'}>
           <IoMdSearch className={style.blockLocation__icon} />
         </button>
         <button
           className={style.blockLocation__button}
           onClick={getCurrentLocation}
-          data-descr={'Определить мое местоположение'}>
+          data-descr={'Determine my location'}>
           <FaLocationDot className={style.blockLocation__icon} />
         </button>
       </div>
