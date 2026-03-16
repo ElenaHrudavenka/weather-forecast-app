@@ -10,7 +10,7 @@ type ForecastItemPropsType = {
 export const ForecastItem = ({ date, temperature, weather_symbol_1h }: ForecastItemPropsType) => {
   const dateStr = getDate(date);
   if (!dateStr) {
-    return <div>Нет данных</div>;
+    return <div>No Data</div>;
   }
   return (
     <div className={style.ForecastItemBlock}>
